@@ -18,7 +18,7 @@ The general format:
 ### Considerations with the Terraform CLI changes
 The Terraform CLI installation guide has changed from the original instructions in the gitpod.yml file due to changes in gpg keyring deprecation. Needed to refer to the lastest Terraform documentation and change the scripting for installation.
 
-[Install Terraform CLI](https://developer.hashicorp.com/Terraform /tutorials/aws-get-started/install-cli)
+[Install Terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 https://www.cyberciti.biz/faq/how-to-check-os-version-in-linux-command-line/
 
 ### Considerations for checking Linux Distribution
@@ -47,7 +47,7 @@ UBUNTU_CODENAME=jammy
 ### Refactoring into Bash Scripts
 While fixing the Terraform CLI gpg deprecation issues, created a new Terraform CLI installation bash script. This minimized the commands used in the gitpod.yml file to just run the script for installing the Terraform CLI.
 
-The bash script is located here: [./bin/install_Terraform _cli](./bin/install_Terraform _cli)
+The bash script is located here: [./bin/install_terraform_cli](./bin/install_terraform_cli)
 
 - This will keep the ([.gitpod.yml](.gitpod.yml)) file tidy
 - This will allow us an easier way to debug installation of Terraform CLI
@@ -68,24 +68,24 @@ ChatGPT recommended this format for bash:`#! /usr/bin/env bash`
 
 When executing the bash script we can use the `./` shorthand notiation to execute the bash script.
 
-eg. `./bin/install_Terraform _cli`
+eg. `./bin/install_terraform _cli`
 
 If we are using a script in .gitpod.yml  we need to point the script to a program to interpert it.
 
-eg. `source ./bin/install_Terraform _cli`
+eg. `source ./bin/install_terraform _cli`
 
 #### Linux Permissions Considerations
 
 In order to make our bash scripts executable we need to change linux permission for the fix to be exetuable at the user mode.
 
 ```sh
-chmod u+x ./bin/install_Terraform _cli
+chmod u+x ./bin/install_terraform _cli
 ```
 
 alternatively:
 
 ```sh
-chmod 744 ./bin/install_Terraform _cli
+chmod 744 ./bin/install_terraform _cli
 ```
 
 https://en.wikipedia.org/wiki/Chmod
@@ -162,7 +162,7 @@ If it is successful, the returned JSON payload should look like this:
 {
     "UserId": "AIDEXAMPLE",
     "Account": "123456789",
-    "Arn": "arn:aws:iam::123456789:user/Terraform -beginner-bootcamp"
+    "Arn": "arn:aws:iam::123456789:user/terraform-beginner-bootcamp"
 }
 ```
 
