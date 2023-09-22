@@ -254,3 +254,5 @@ Copy this code into your file
     }
 }
 ```
+
+Automated the process by creating this bash script as a workaround [/bin/generate_tfrc_credentials](/bin/generate_tfrc_credentials)
