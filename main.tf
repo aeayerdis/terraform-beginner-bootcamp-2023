@@ -43,7 +43,7 @@ DESCRIPTION
   domain_name = module.home_soccer_hosting.domain_name
   #domain_name = "123454.cloudfront.net"
   town = "missingo"
-  content_version = 3
+  content_version = var.soccer.content_version
 }
 
 # module "home_golf_hosting" {
