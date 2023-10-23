@@ -5,7 +5,15 @@ terraform {
       version = "1.0.0"
     }
   }
-}
+
+  
+cloud {
+    organization = "aea"
+    workspaces {
+      name = "terra-house-soccer"
+    }
+  }
+}  
 
 provider "terratowns" {
   endpoint = var.terratowns_endpoint
@@ -33,6 +41,27 @@ to them and where the defenders are coming in from. Movement off the ball is ano
 in soccer. Just because you don't have the ball doesn't mean you don't have to make yourself available
 to your players who do have the ball. You must always anticipate the sudden shift in the game to be in the 
 right positioning!
+DESCRIPTION
+  domain_name = module.terrahouse_aws.cloudfront_url
+  #domain_name = "123454.cloudfront.net"
+  town = "missingo"
+  content_version = 1
+}
+
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.teacherseat_user_uuid
+  index_html_filepath = var.index_html_filepath
+  error_html_filepath = var.error_html_filepath
+  content_version = var.content_version
+  assets_path = var.assets_path
+}
+
+resource "terratowns_home" "home2" {
+  name = "How to git gud at golf"
+  description = <<DESCRIPTION
+Practice makes perfect. thats it...just practice before you play and don't build
+bad habits.
 DESCRIPTION
   domain_name = module.terrahouse_aws.cloudfront_url
   #domain_name = "123454.cloudfront.net"
