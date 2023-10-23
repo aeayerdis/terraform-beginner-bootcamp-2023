@@ -5,7 +5,15 @@ terraform {
       version = "1.0.0"
     }
   }
-}
+
+  
+cloud {
+    organization = "aea"
+    workspaces {
+      name = "terra-house-soccer"
+    }
+  }
+}  
 
 provider "terratowns" {
   endpoint = var.terratowns_endpoint
@@ -13,16 +21,14 @@ provider "terratowns" {
   token=var.terratowns_access_token
   }
 
-module "terrahouse_aws" {
-  source = "./modules/terrahouse_aws"
+module "home_soccer_hosting" {
+  source = "./modules/terrahome_aws"
   user_uuid = var.teacherseat_user_uuid
-  index_html_filepath = var.index_html_filepath
-  error_html_filepath = var.error_html_filepath
-  content_version = var.content_version
-  assets_path = var.assets_path
+  public_path = var.soccer.public_path
+  content_version = var.soccer.content_version
 }
 
-resource "terratowns_home" "home" {
+resource "terratowns_home" "soccer_home" {
   name = "How to git gud at soccer"
   description = <<DESCRIPTION
 Soccer is so much more than just running and kicking a ball.
@@ -34,8 +40,28 @@ in soccer. Just because you don't have the ball doesn't mean you don't have to m
 to your players who do have the ball. You must always anticipate the sudden shift in the game to be in the 
 right positioning!
 DESCRIPTION
-  domain_name = module.terrahouse_aws.cloudfront_url
+  domain_name = module.home_soccer_hosting.domain_name
   #domain_name = "123454.cloudfront.net"
   town = "missingo"
-  content_version = 1
+  content_version = var.soccer.content_version
 }
+
+# module "home_golf_hosting" {
+#   source = "./modules/terrahome_aws"
+#   user_uuid = var.teacherseat_user_uuid
+#   public_path = var.golf.public_path
+#  content_version = var.golf.content_version
+  
+# }
+
+# resource "terratowns_home" "home2" {
+#   name = "How to git gud at golf"
+#   description = <<DESCRIPTION
+# Practice makes perfect. thats it...just practice before you play and don't build
+# bad habits.
+# DESCRIPTION
+#   domain_name = module.home_golf_hosting.domain_name
+#   #domain_name = "123454.cloudfront.net"
+#   town = "missingo"
+#   content_version = 1
+# }
