@@ -42,7 +42,7 @@ right positioning!
 DESCRIPTION
   domain_name = module.home_soccer_hosting.domain_name
   #domain_name = "123454.cloudfront.net"
-  town = "missingo"
+  town = "gamers-grotto"
   content_version = var.soccer.content_version
 }
 
